@@ -1,0 +1,118 @@
+<?xml version='1.0' standalone='yes'?>
+<!-- https://forums.unraid.net/topic/38431-plug-in-application-template-categorizer/ -->
+<!DOCTYPE PLUGIN [
+<!ENTITY name      "docker.categorize">
+<!ENTITY author    "Andrew Zawadzki">
+<!ENTITY version   "2022.03.10">
+<!ENTITY launch    "Docker.Categorize">
+<!ENTITY plugdir   "/usr/local/emhttp/plugins/&name;">
+<!ENTITY github    "Squidly271/docker.categorize">
+<!ENTITY pluginURL "https://raw.githubusercontent.com/&github;/master/plugins/&name;.plg">
+]>
+
+<PLUGIN name="&name;" author="&author;" version="&version;" launch="&launch;" pluginURL="&pluginURL;" icon="list-alt">
+
+<CHANGES>
+###2022.03.10
+- Add in privacy as a network subcategory
+
+###2021.07.25
+- Remove extraneous file
+
+###2021.05.19
+- Add Crypto as a category
+
+###2021.03.10
+- Permission Fix
+
+###2020.02.09
+- Add in Security as a category
+
+###2020.01.16
+- Add in VPN as a network category
+
+###2019.12.31
+- Add in Themes as a tools subcategory
+
+###2019.04.28
+- Add in Game Servers as a category
+
+###2019.01.19###
+- Update Icon
+
+###2016.07.22###
+- Formatting changes as per CHBMB's OCD
+
+###2015.08.25###
+- Remove option for automatically adding lines to templates (easier to copy / paste)
+- Full 6.1RC6 compliance
+
+###2015.08.18###
+- Full compatibility with 6.1 security
+
+###2015.07.26###
+- 6.1 RC2 Hotfix
+
+###2015.06.18###
+- Added in reminder to add optional Changes section
+
+###2015.06.08###
+- Add in Date section
+
+###2015.04.31###
+- Renamed DNS Servers to be DNS Clients / Servers
+
+###2015.04.30###
+- Add Clear Categories button
+
+###2015.04.24###
+- Add Network:IRC
+
+###2015.04.20###
+- Change Naming of categories.  Add Photos
+
+###2015.04.18###
+- Initial Release
+</CHANGES>
+<!-- The 'pre-install' script. -->
+<FILE Run="/bin/bash">
+<INLINE>
+# Remove old 'source' files
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<!--
+The 'source' file.
+-->
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
+<URL>https://raw.github.com/&github;/master/archive/&name;-&version;.txz</URL>
+<MD5>223fec3cba7c0a2371d33fc7e14f7ab0</MD5>
+</FILE>
+
+<!--
+The 'post-install' script
+-->
+<FILE Run="/bin/bash">
+<INLINE>
+echo ""
+echo "----------------------------------------------------"
+echo " &name; has been installed."
+echo " Copyright 2015-2020, Andrew Zawadzki Software"
+echo " Version: &version;"
+echo "----------------------------------------------------"
+echo ""
+</INLINE>
+</FILE>
+
+<!--
+The 'remove' script.
+-->
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+removepkg &name;-&version;
+rm -rf &plugdir;
+rm -rf /boot/config/plugins/&name;
+</INLINE>
+</FILE> 
+</PLUGIN>

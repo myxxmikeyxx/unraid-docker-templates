@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<Container version="2">
+    <Name Default="NodeJS">NodeJS</Name>
+    <Registry>https://registry.hub.docker.com/_/node/</Registry>
+    <Repository>node/node</Repository>
+    <Github>https://github.com/nodejs</Github>
+    <Network>bridge</Network>
+    <MyIP/>
+    <Privileged>false</Privileged>
+    <Support>https://github.com/nodejs</Support>
+    <Project/>
+    <Overview>
+        My NodeJS Unraid Container.
+    </Overview>
+    <Category>Other: Productivity: Tools: Status:Beta</Category>
+    <!-- <Category>Other: Productivity: Tools: Status:Stable</Category> -->
+    <WebUI>http://[IP]:[PORT:8181]</WebUI>
+    <TemplateURL/>
+    <Icon>https://raw.githubusercontent.com/sebastienvermeille/unraid-docker-templates/main/images/mycroft_icon.png</Icon>
+    <ExtraParams/>
+    <PostArgs/>
+    <DateInstalled>1527397055</DateInstalled>
+    <DonateText/>
+    <DonateLink/>
+    <DonateImg/>
+    <MinVer/>
+    <Description>
+        My NodeJS Unraid Container.
+    </Description>
+    <Networking>
+        <Mode>bridge</Mode>
+        <Publish>
+            <Port>
+                <HostPort>9001</HostPort>
+                <ContainerPort>8080</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+        </Publish>
+    </Networking>
+    <Data>
+        <Volume>
+            <HostDir>/mnt/user/appdata/nodejs</HostDir>
+            <ContainerDir>/root/.mycroft</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+        <Volume>
+            <HostDir>/mnt/user/appdata/nodejs</HostDir>
+            <ContainerDir>/opt/mycroft/skills</ContainerDir>
+            <Mode>rw</Mode>
+        </Volume>
+    </Data>
+    <Environment/>
+    <Labels/>
+    <Config Name="Host Port" 
+            Type="Port" 
+            Target="8080" 
+            Default="8080" 
+            Mode="tcp" 
+            Description="Container Port: 8080" 
+            Display="always"
+            Required="true" 
+            Mask="false">8080</Config>
+    <Config Name="AppData Config Path" 
+            Type="Path" 
+            Target="/config" 
+            Default="/mnt/user/appdata/mycroft/config" 
+            Mode="rw"
+            Description="Container Path: /root/.mycroft"
+            Display="advanced-hide" 
+            Required="true" 
+            Mask="false">/mnt/user/appdata/mycroft/config</Config>
+    <Config Name="AppData Skills Path" 
+            Type="Path" 
+            Target="/opt/mycroft/skills" 
+            Default="/mnt/user/appdata/mycroft/skills" 
+            Mode="rw"
+            Description="Container Path: /root/.mycroft"
+            Display="advanced-hide" 
+            Required="true" 
+            Mask="false">/mnt/user/appdata/mycroft/skills</Config>
+</Container>
