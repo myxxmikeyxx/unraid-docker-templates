@@ -78,4 +78,14 @@
             Display="advanced-hide" 
             Required="true" 
             Mask="false">/mnt/user/appdata/mycroft/skills</Config>
+    <Config Name="jenkins_home" 
+            Target="/var/jenkins_home" 
+            Default="/mnt/user/appdata/Jenkins" 
+            Mode="rw" 
+            Description="Container Path: /var/jenkins_home" 
+            Type="Path" 
+            Display="advanced" 
+            Required="true" 
+            Mask="false"/>
+
 </Container>
