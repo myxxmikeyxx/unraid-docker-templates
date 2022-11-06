@@ -69,23 +69,14 @@
             Display="advanced-hide" 
             Required="true" 
             Mask="false">/mnt/user/appdata/mycroft/config</Config>
-    <Config Name="AppData Skills Path" 
-            Type="Path" 
-            Target="/opt/mycroft/skills" 
-            Default="/mnt/user/appdata/mycroft/skills" 
-            Mode="rw"
-            Description="Container Path: /root/.mycroft"
-            Display="advanced-hide" 
-            Required="true" 
-            Mask="false">/mnt/user/appdata/mycroft/skills</Config>
-    <Config Name="jenkins_home" 
-            Target="/var/jenkins_home" 
-            Default="/mnt/user/appdata/Jenkins" 
+    <Config Name="nodejs_home"
+            Type="Path"  
+            Target="./" 
+            Default="/mnt/user/appdata/nodejs" 
             Mode="rw" 
-            Description="Container Path: /var/jenkins_home" 
-            Type="Path" 
+            Description="Container Path: ./" 
             Display="advanced" 
             Required="true" 
-            Mask="false"/>
+            Mask="false">/mnt/user/appdata/Jenkins</Config>
 
 </Container>
